@@ -1,8 +1,8 @@
 require('dotenv').config();
 const axios = require('axios');
 
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8677925355:AAHWjg3-FQnV9FvIVLlC7zi9Kt0mgJlgejw';
-const CHAT_ID = process.env.CHAT_ID || '-1003803781634';
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || 'COLOQUE SEU TOKEN AQUI (BOT TELEGRAM)';
+const CHAT_ID = process.env.CHAT_ID || 'COLOQUE ID DO CHAT AQUI DO TELEGRAM';
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
 /**
