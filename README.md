@@ -32,15 +32,14 @@ Internet lenta sem causa aparente
 Dispositivos caindo da rede
 Alto consumo de banda
 Falta de visibilidade da rede local
-🏗️ Arquitetura do Projeto
-[ Dispositivos da Rede ]
 
+🏗️ Arquitetura do Projeto
+
+[ Dispositivos da Rede ]
           ↓
 [ Scanner / Monitoramento ]
-
           ↓
 [ Processamento de Dados ]
-
           ↓
 [ Interface / Output (CLI ou Dashboard) ]
 
