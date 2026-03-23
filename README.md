@@ -34,12 +34,16 @@ Alto consumo de banda
 Falta de visibilidade da rede local
 🏗️ Arquitetura do Projeto
 [ Dispositivos da Rede ]
+
           ↓
 [ Scanner / Monitoramento ]
+
           ↓
 [ Processamento de Dados ]
+
           ↓
 [ Interface / Output (CLI ou Dashboard) ]
+
 🔹 Camadas
 
 1. Coleta de Dados
@@ -65,6 +69,7 @@ Alertas (opcional)
 
 Backend
 Python / Node.js / Bash (dependendo do seu projeto)
+
 Bibliotecas comuns:
 psutil → uso de rede
 socket → conexões
@@ -72,60 +77,84 @@ subprocess → execução de ping
 scapy → análise de pacotes (avançado)
 Sistema
 Linux / Windows compatível
+
 Uso de comandos nativos:
 ping
 netstat
 ipconfig / ifconfig
+
 🔍 Funcionalidades
+
 📡 Monitoramento de dispositivos
+
 Verifica se dispositivos estão online/offline
+
 Atualização em tempo real
+
 ⚡ Medição de latência
 Ping contínuo
+
 Identificação de instabilidade
+
 📊 Monitoramento de tráfego
+
 Upload / Download
+
 Uso de banda
+
 🧠 Diagnóstico de rede
+
 Ajuda a identificar gargalos
+
 Detecta perda de pacote
-🧪 Como funciona (fluxo)
+
+🧪 Como funciona (fluxo):
 O sistema coleta dados da rede
 Executa testes (ping / leitura de tráfego)
 Processa os dados
 Exibe os resultados em tempo real
+Emvia Alertas para Telegram
+Tenta reiniciar processos que cairam
+
 🚀 Como rodar o projeto
-# Clonar repositório
+# Clonar repositório:
 git clone https://github.com/CalimanMateus/network-monitoring.git
 
-# Entrar na pasta
+# Entrar na pasta:
 cd network-monitoring
 
-# Instalar dependências
+# Instalar dependências:
 pip install -r requirements.txt   # ou npm install
 
 # Executar
-python main.py   # ou node app.js
-📊 Exemplo de saída
+python main.py ou node app.js
+
+📊 Exemplo de saída:
+
 Dispositivo: 192.168.0.1
 Status: ONLINE
 Latência: 12ms
 Download: 5.2 MB/s
 Upload: 1.1 MB/s
+
+
 🧱 Desafios do Projeto
 🔴 1. Captura de dados de rede
 Difícil obter dados precisos em tempo real
 Diferença entre sistemas operacionais
+
 🔴 2. Permissões do sistema
 Algumas funções exigem privilégios elevados (root/admin)
+
 🔴 3. Performance
 Monitoramento contínuo pode consumir recursos
+
 🔴 4. Precisão dos dados
 Ping não representa toda a realidade da rede
 Necessidade de múltiplas métricas
+
 💡 Possíveis melhorias
-Dashboard web (React / Vue)
-Alertas via Telegram/Email
+- Dashboard web (React / Vue)
 Histórico de dados (Banco de Dados)
 Integração com APIs
 Detecção automática de dispositivos
@@ -135,15 +164,17 @@ Monitoramento de sistemas
 Programação assíncrona
 Coleta e análise de dados
 Observabilidade
-🧑‍💻 Autor
 
+
+🧑‍💻 Autor
 Mateus Caliman
 Projeto desenvolvido para aprendizado e prática em:
 
-Redes
-Monitoramento
-Backend
-DevOps
+- Redes
+- Monitoramento
+- Backend
+- DevOps
+
 ⭐ Por que esse projeto é forte no portfólio?
 
 ✔ Mostra conhecimento em redes
