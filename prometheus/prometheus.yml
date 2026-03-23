@@ -1,0 +1,71 @@
+# ==========================================
+# Prometheus Configuration - Network Monitoring 2026
+# ==========================================
+
+# Configuração global do Prometheus
+global:
+  scrape_interval: 15s          # Intervalo de coleta de métricas
+  evaluation_interval: 15s      # Intervalo de avaliação de regras
+
+# Arquivos de regras (opcional - descomentar para usar)
+rule_files:
+  # - "alert_rules.yml"
+  # - "recording_rules.yml"
+
+# Configuração de scrape (coleta de métricas)
+scrape_configs:
+  # ==========================================
+  # Prometheus Auto-Monitoring
+  # ==========================================
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+    scrape_interval: 15s
+    metrics_path: "/metrics"
+    # Métricas: up, prometheus_build_info, prometheus_config_last_reload_successful, etc.
+
+  # ==========================================
+  # Node.js Backend Application
+  # ==========================================
+  - job_name: "node-backend"
+    static_configs:
+      - targets: ["localhost:3000"]
+    scrape_interval: 15s
+    metrics_path: "/metrics"
+    # Métricas coletadas:
+    # - process_cpu_user_seconds_total: Tempo de CPU do processo Node.js
+    # - process_resident_memory_bytes: Memória residente do processo
+    # - http_requests_total: Contador de requisições HTTP
+
+  # ==========================================
+  # Node Exporter - Host System Metrics
+  # ==========================================
+  - job_name: "node-exporter"
+    static_configs:
+      - targets: ["localhost:9100"]
+    scrape_interval: 15s
+    metrics_path: "/metrics"
+    # Métricas coletadas:
+    # - node_cpu_seconds_total: Tempo total de CPU por modo
+    # - node_memory_MemAvailable_bytes: Memória disponível
+    # - node_memory_MemTotal_bytes: Memória total
+    # - node_disk_bytes_read: Bytes lidos do disco
+    # - node_disk_bytes_written: Bytes escritos no disco
+    # - node_network_receive_bytes_total: Bytes recebidos na rede
+    # - node_network_transmit_bytes_total: Bytes transmitidos na rede
+    # - node_time_seconds: Timestamp do sistema
+
+  # ==========================================
+  # cAdvisor - Docker Container Metrics
+  # ==========================================
+  - job_name: "docker"
+    static_configs:
+      - targets: ["localhost:8080"]
+    scrape_interval: 15s
+    metrics_path: "/metrics"
+    # Métricas coletadas:
+    # - container_memory_usage_bytes: Uso de memória por container
+    # - container_cpu_usage_seconds_total: CPU usada por container
+    # - container_network_receive_bytes_total: Rede recebida por container
+    # - container_network_transmit_bytes_total: Rede transmitida por container
+

@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+
+  db:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      POSTGRES_DB: zabbix
+    ports:
+      - "5432:5432"
+
+zabbix-server:
+  image: zabbix/zabbix-server-pgsql:latest
+  container_name: zabbix-server
+  depends_on:
+    - db
+  environment:
+    DB_SERVER_HOST: db
+    POSTGRES_USER: zabbix
+    POSTGRES_PASSWORD: zabbix
+    POSTGRES_DB: zabbix
+  ports:
+    - "10051:10051"
+  cap_add:
+    - NET_RAW
+
+  zabbix-web:
+    image: zabbix/zabbix-web-nginx-pgsql:latest
+    container_name: zabbix-web
+    depends_on:
+      - zabbix-server
+      - db
+    environment:
+      DB_SERVER_HOST: db
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      ZBX_SERVER_HOST: zabbix-server
+    ports:
+      - "8080:8080"
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3001:3000"
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus:/etc/prometheus
+    ports:
+      - "9090:9090"
+
+  uptime-kuma:
+    image: louislam/uptime-kuma
+    container_name: uptime-kuma
+    ports:
+      - "3002:3001"
